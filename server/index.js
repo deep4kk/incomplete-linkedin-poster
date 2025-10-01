@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import geminiRoutes from './routes/gemini.js';
+import perplexityRoutes from './routes/perplexity.js';
 import linkedinRoutes from './routes/linkedin.js';
 import postsRoutes from './routes/posts.js';
 import { initTelegramBot } from './services/telegramService.js';
@@ -15,7 +15,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/api/gemini', geminiRoutes);
+app.use('/api/perplexity', perplexityRoutes);
 app.use('/api/posts', postsRoutes);
 app.use('/auth/callback', linkedinRoutes);
 app.use('/api/linkedin', linkedinRoutes);

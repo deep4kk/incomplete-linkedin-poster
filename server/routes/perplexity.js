@@ -1,5 +1,5 @@
 import express from 'express';
-import { generateMultiplePosts } from '../services/geminiService.js';
+import { generateMultiplePosts } from '../services/perplexityService.js';
 import { database } from '../config/database.js';
 
 const router = express.Router();

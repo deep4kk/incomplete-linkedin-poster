@@ -89,10 +89,10 @@ export async function postToLinkedIn(content, accessToken) {
     }
 
     const userInfo = await getUserInfo(token);
-    const authorUrn = `urn:li:person:${userInfo.sub}`;
+    const personId = userInfo.sub;
 
     const postData = {
-      author: authorUrn,
+      author: `urn:li:person:${personId}`,
       lifecycleState: 'PUBLISHED',
       specificContent: {
         'com.linkedin.ugc.ShareContent': {
@@ -115,6 +115,7 @@ export async function postToLinkedIn(content, accessToken) {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
           'X-Restli-Protocol-Version': '2.0.0',
+          'LinkedIn-Version': '202407',
         },
       }
     );

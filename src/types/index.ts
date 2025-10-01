@@ -28,4 +28,3 @@ export interface Stats {
   rejected: number;
 }
 
-export type Niche = 'AI Integration' | 'Google Apps Script' | 'Data Management Automation';

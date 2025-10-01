@@ -2,7 +2,7 @@ const API_BASE_URL = 'http://localhost:3001/api';
 
 export const api = {
   async generatePosts(niche: string) {
-    const response = await fetch(`${API_BASE_URL}/gemini/generate`, {
+    const response = await fetch(`${API_BASE_URL}/perplexity/generate`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ niche }),

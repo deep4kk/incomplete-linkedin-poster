@@ -6,11 +6,11 @@ import { PostCard } from './components/PostCard';
 import { Dashboard } from './components/Dashboard';
 import { LogsTable } from './components/LogsTable';
 import { api } from './lib/api';
-import { Niche, Post, PostLog, Stats } from './types';
+import { Post, PostLog, Stats } from './types';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [selectedNiche, setSelectedNiche] = useState<Niche | null>(null);
+  const [selectedNiche, setSelectedNiche] = useState<string>('');
   const [posts, setPosts] = useState<Post[]>([]);
   const [logs, setLogs] = useState<PostLog[]>([]);
   const [stats, setStats] = useState<Stats>({
@@ -122,7 +122,7 @@ function App() {
         await loadPosts();
         await loadStats();
         await loadLogs();
-        setSelectedNiche(null);
+        setSelectedNiche('');
       } else {
         setError(result.error || 'Failed to generate posts');
       }
@@ -255,7 +255,7 @@ function App() {
             <div className="flex justify-center">
               <button
                 onClick={handleGeneratePosts}
-                disabled={!selectedNiche || isGenerating}
+                disabled={!selectedNiche.trim() || isGenerating}
                 className="flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl hover:from-blue-700 hover:to-blue-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg hover:shadow-xl font-medium text-lg"
               >
                 {isGenerating ? (
